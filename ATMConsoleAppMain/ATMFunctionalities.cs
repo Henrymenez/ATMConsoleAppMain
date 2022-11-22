@@ -73,7 +73,7 @@
             }
         }
     }
-    public class ATMFunctionalitie
+    public class ATMFunctionalities
     {
         public void printOptions(string language)
         {
@@ -95,6 +95,14 @@
                 Console.WriteLine("3. Gosi Balance");
                 Console.WriteLine("4. Nyefee Ego");
                 Console.WriteLine("5. Ụzọ ọpụpụ");
+            }else if(language == "3")
+            {
+                Console.WriteLine("Abeg Select one of these options..!");
+                Console.WriteLine("1. put money");
+                Console.WriteLine("2.  commot money");
+                Console.WriteLine("3. you wan see balance");
+                Console.WriteLine("4. send money give person");
+                Console.WriteLine("5. Exit");
             }
             else
             {
@@ -116,7 +124,7 @@
             Console.WriteLine("Select Language Option");
             Console.WriteLine("1. English");
             Console.WriteLine("2. Igbo");
-            // Console.WriteLine("3. pidgin");
+             Console.WriteLine("3. pidgin");
             string Language = Console.ReadLine();
 
             LanguageOptions languageOptions = new LanguageOptions();

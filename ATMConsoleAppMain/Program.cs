@@ -1,4 +1,6 @@
-﻿namespace ATMConsoleAppMain
+﻿using System;
+using ATMConsoleAppMain;
+namespace ATMConsoleAppMain
 {
     internal class Program
     {
