@@ -2,35 +2,35 @@
 {
     public class CardHolder
     {
-        private string _CardNumber { get; set; }
-        private int _CardPin { get; set; }
-        private string _FullName { get; set; }
-        private double _UserBalanace { get; set; }
+        private string CardNumber { get; set; }
+        private int CardPin { get; set; }
+        private string FullName { get; set; }
+        private double UserBalanace { get; set; }
         public CardHolder(string CardNumber, int CardPin, string FullName, double UserBalanace)
         {
-            _CardNumber = CardNumber;
-            _CardPin = CardPin;
-            _FullName = FullName;
-            _UserBalanace = UserBalanace;
+            CardNumber = CardNumber;
+            CardPin = CardPin;
+            FullName = FullName;
+            UserBalanace = UserBalanace;
         }
 
         public int GetCardPin()
-        { return _CardPin; }
+        { return CardPin; }
 
         public double GetUserBalance()
         {
-            return _UserBalanace;
+            return UserBalanace;
         }
         public string GetCardNumber()
-        { return _CardNumber; }
+        { return CardNumber; }
 
-        public string GetFullName() { return _FullName; }
+        public string GetFullName() { return FullName; }
         public void deposit(CardHolder CurrentUser)
         {
             Console.WriteLine("How much would you like to deposit: ");
             double deposit = Double.Parse(Console.ReadLine());
-            CurrentUser._UserBalanace = deposit + CurrentUser._UserBalanace;
-            Console.WriteLine("Thank you, your new balnace is: " + CurrentUser._UserBalanace);
+            CurrentUser.UserBalanace = deposit + CurrentUser.UserBalanace;
+            Console.WriteLine("Thank you, your new balnace is: " + CurrentUser.UserBalanace);
 
         }
 
@@ -38,14 +38,14 @@
         {
             Console.WriteLine("How much would you like to withdraw: ");
             double withdrawal = Double.Parse(Console.ReadLine());
-            if (withdrawal > CurrentUser._UserBalanace)
+            if (withdrawal > CurrentUser.UserBalanace)
             {
                 Console.WriteLine("Insufficient balance");
             }
             else
             {
-                double NewBalance = CurrentUser._UserBalanace - withdrawal;
-                CurrentUser._UserBalanace = NewBalance;
+                double NewBalance = CurrentUser.UserBalanace - withdrawal;
+                CurrentUser.UserBalanace = NewBalance;
                 Console.WriteLine("Thank you for withdrawing " + withdrawal);
             }
 
@@ -55,27 +55,27 @@
         {
             Console.WriteLine("How much would you like to transfer: ");
             double transfer = Double.Parse(Console.ReadLine());
-            if (transfer > CurrentUser._UserBalanace)
+            if (transfer > CurrentUser.UserBalanace)
             {
                 Console.WriteLine("Insufficient balance");
             }
             else
             {
 
-                double NewBalance = CurrentUser._UserBalanace - transfer;
-                double TransferUserNewBalance = TransferUser._UserBalanace + transfer;
+                double NewBalance = CurrentUser.UserBalanace - transfer;
+                double TransferUserNewBalance = TransferUser.UserBalanace + transfer;
 
-                CurrentUser._UserBalanace = NewBalance;
-                TransferUser._UserBalanace = TransferUserNewBalance;
-                Console.WriteLine("Thank you for Transfering " + transfer + " to " + TransferUser._FullName);
-                Console.WriteLine("Your Current Balance is " + CurrentUser._UserBalanace);
+                CurrentUser.UserBalanace = NewBalance;
+                TransferUser.UserBalanace = TransferUserNewBalance;
+                Console.WriteLine("Thank you for Transfering " + transfer + " to " + TransferUser.FullName);
+                Console.WriteLine("Your Current Balance is " + CurrentUser.UserBalanace);
 
             }
         }
     }
-    public class ATMFunctionalities
+    public class ATMFunctionalitie
     {
-       public void printOptions(string language)
+        public void printOptions(string language)
         {
 
             if (language == "1")
@@ -116,7 +116,7 @@
             Console.WriteLine("Select Language Option");
             Console.WriteLine("1. English");
             Console.WriteLine("2. Igbo");
-            Console.WriteLine("3. pidgin");
+            // Console.WriteLine("3. pidgin");
             string Language = Console.ReadLine();
 
             LanguageOptions languageOptions = new LanguageOptions();
@@ -162,7 +162,7 @@
                     }
                     else
                     {
-                      languageOptions.cardPinNotRecognized(Language);
+                        languageOptions.cardPinNotRecognized(Language);
                     }
                 }
                 catch
