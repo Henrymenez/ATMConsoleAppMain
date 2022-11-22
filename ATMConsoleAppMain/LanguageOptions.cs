@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ATMConsoleAppMain
+﻿namespace ATMConsoleAppMain
 {
     public class LanguageOptions
     {
-     //   public string SelectedOption = "";
+        //   public string SelectedOption = "";
 
         public void welcome(string message)
         {
-            if(message == "1")
+            if (message == "1")
             {
                 Console.WriteLine("Welcome To Our ATM");
                 Console.WriteLine("Please Insert Your Card Number: ");
-            }else if(message == "2")
+            }
+            else if (message == "2")
             {
-                Console.WriteLine("Nnọọ na ATM anyị");
-                Console.WriteLine("Biko tinye nọmba kaadị gị: ");
+                Console.WriteLine("Nnoo na ATM anyi");
+                Console.WriteLine("Biko tinye nomba kaadi gi: ");
             }
             else if (message == "3")
             {
@@ -42,7 +37,7 @@ namespace ATMConsoleAppMain
             }
             else if (message == "2")
             {
-                Console.WriteLine("Achọpụtaghị kaadị nwaa ọzọ");
+                Console.WriteLine("Achoputaghi kaadi nwaa ozo");
             }
             else if (message == "3")
             {
@@ -56,7 +51,7 @@ namespace ATMConsoleAppMain
 
         }
 
-       
+
         public void InsertPinNumber(string message)
         {
             if (message == "1")
@@ -65,11 +60,11 @@ namespace ATMConsoleAppMain
             }
             else if (message == "2")
             {
-                Console.WriteLine("Biko nye nọmba pin gị: ");
+                Console.WriteLine("Biko nye nomba pin gi: ");
             }
             else if (message == "3")
             {
-                Console.WriteLine("This your card number no correct, abeg put am again");
+                Console.WriteLine("Abeg try put your card pin: ");
             }
             else
             {
@@ -85,11 +80,11 @@ namespace ATMConsoleAppMain
             }
             else if (message == "2")
             {
-                Console.WriteLine("Ntụtụ kaadị ezighi ezi nwaa ọzọ");
+                Console.WriteLine("Ntutu kaadi ezighi ezi nwaa ozo");
             }
             else if (message == "3")
             {
-                Console.WriteLine("This your pin no correct, abeg put am again");
+                Console.WriteLine("This your card pin no correct, abeg put am again");
             }
             else
             {
@@ -98,7 +93,7 @@ namespace ATMConsoleAppMain
 
         }
 
-        public void WelcomeUser(string message, string FullName )
+        public void WelcomeUser(string message, string FullName)
         {
             if (message == "1")
             {
@@ -106,7 +101,7 @@ namespace ATMConsoleAppMain
             }
             else if (message == "2")
             {
-                Console.WriteLine("Nnọọ " + FullName);
+                Console.WriteLine("Nnoo " + FullName);
             }
             else if (message == "3")
             {
@@ -119,7 +114,7 @@ namespace ATMConsoleAppMain
             }
         }
 
-        public void DisplayBalance(string message,double balance )
+        public void DisplayBalance(string message, double balance)
         {
 
             if (message == "1")
@@ -128,7 +123,7 @@ namespace ATMConsoleAppMain
             }
             else if (message == "2")
             {
-                Console.WriteLine("Balance gị ugbu a bụ " + balance);
+                Console.WriteLine("Balance gi ugbu a bu " + balance);
             }
             else if (message == "3")
             {
@@ -149,7 +144,7 @@ namespace ATMConsoleAppMain
             }
             else if (message == "2")
             {
-                Console.WriteLine("Biko tinye nọmba kaadị gị nke onye ịchọrọ ibufe na ya: ");
+                Console.WriteLine("Biko tinye nomba kaadi gi nke onye ichoro ibufe na ya: ");
             }
             else if (message == "3")
             {
@@ -170,7 +165,7 @@ namespace ATMConsoleAppMain
             }
             else if (message == "2")
             {
-                Console.WriteLine("Daalụ nwere ọmarịcha ụbọchị");
+                Console.WriteLine("Daalu nwere omaricha ubochi");
             }
             else if (message == "3")
             {
@@ -182,6 +177,146 @@ namespace ATMConsoleAppMain
             }
         }
 
-        
+        public void LikeToDeposit(string message)
+        {
+            if (message == "1")
+            {
+                Console.WriteLine("How much would you like to deposit: ");
+            }
+            else if (message == "2")
+            {
+                Console.WriteLine("Ego ole ka ichoro itenye");
+            }
+            else if (message == "3")
+            {
+                Console.WriteLine("How Much you go like deposit: ");
+            }
+            else
+            {
+                Console.WriteLine("How much would you like to deposit: ");
+            }
+        }
+        public void ThanksToDeposit(string message, double balance)
+        {
+            if (message == "1")
+            {
+                Console.WriteLine("Thank you, your new balnace is: " + balance);
+            }
+            else if (message == "2")
+            {
+                Console.WriteLine("Daalụ, Balance gi ugbu a bu   " + balance);
+            }
+            else if (message == "3")
+            {
+                Console.WriteLine("Na you do pass, your new balance na: " + balance);
+            }
+            else
+            {
+                Console.WriteLine("Thank you, your new balnace is: " + balance);
+            }
+        }
+
+        public void LikeToWithdraw(string message)
+        {
+
+            if (message == "1")
+            {
+                Console.WriteLine("How much would you like to withdraw: ");
+            }
+            else if (message == "2")
+            {
+                Console.WriteLine("Ego ole ka ichoro iwepu: ");
+            }
+            else if (message == "3")
+            {
+                Console.WriteLine("How Much you go like withdraw: ");
+            }
+            else
+            {
+                Console.WriteLine("How much would you like to withdraw: ");
+            }
+        }
+
+        public void NotEnoughBalance(string message)
+        {
+            if (message == "1")
+            {
+                Console.WriteLine("Insufficient balance");
+            }
+            else if (message == "2")
+            {
+                Console.WriteLine("Ego gi perempe");
+            }
+            else if (message == "3")
+            {
+                Console.WriteLine("Your balance no reach, you fit no too get money like that");
+            }
+            else
+            {
+                Console.WriteLine("Insufficient balance");
+            }
+        }
+
+        public void ThanksForWithdrawing(string message, double amount)
+        {
+            if (message == "1")
+            {
+                Console.WriteLine("Thank you for withdrawing : " + amount);
+            }
+            else if (message == "2")
+            {
+                Console.WriteLine("Daalụ, make i withdraw " + amount);
+            }
+            else if (message == "3")
+            {
+                Console.WriteLine("i hail you as you withdraw : " + amount);
+            }
+            else
+            {
+                Console.WriteLine("Thank you for withdrawing : " + amount);
+            }
+        }
+
+
+        public void LikeToTransfer(string message)
+        {
+
+            if (message == "1")
+            {
+                Console.WriteLine("How much would you like to Transfer: ");
+            }
+            else if (message == "2")
+            {
+                Console.WriteLine("Ego ole ka ichoro iyefee: ");
+            }
+            else if (message == "3")
+            {
+                Console.WriteLine("How Much you go like Transfer: ");
+            }
+            else
+            {
+                Console.WriteLine("How much would you like to Transfer: ");
+            }
+        }
+        public void ThankForTransfer(string message,double transfer, string fullName)
+        {
+
+            if (message == "1")
+            {
+                Console.WriteLine("Thank you for Transfering " + transfer + " to " + fullName);
+            }
+            else if (message == "2")
+            {
+                Console.WriteLine("Daalu maka  " + transfer + " ibufere " + fullName);
+            }
+            else if (message == "3")
+            {
+                Console.WriteLine("Thank you as you Transfer " + transfer + " give " + fullName);
+            }
+            else
+            {
+                Console.WriteLine("Thank you for Transfering " + transfer + " to " + fullName);
+            }
+        }
     }
 }

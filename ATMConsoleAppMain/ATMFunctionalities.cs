@@ -6,12 +6,12 @@
         private int CardPin { get; set; }
         private string FullName { get; set; }
         private double UserBalanace { get; set; }
-        public CardHolder(string CardNumber, int CardPin, string FullName, double UserBalanace)
+        public CardHolder(string cardNumber, int cardPin, string fullName, double userBalanace)
         {
-            CardNumber = CardNumber;
-            CardPin = CardPin;
-            FullName = FullName;
-            UserBalanace = UserBalanace;
+            CardNumber = cardNumber;
+            CardPin = cardPin;
+            FullName = fullName;
+            UserBalanace = userBalanace;
         }
 
         public int GetCardPin()
@@ -25,39 +25,41 @@
         { return CardNumber; }
 
         public string GetFullName() { return FullName; }
-        public void deposit(CardHolder CurrentUser)
+
+        LanguageOptions languageOptions = new LanguageOptions();
+        public void deposit(CardHolder CurrentUser, string language)
         {
-            Console.WriteLine("How much would you like to deposit: ");
+            languageOptions.LikeToDeposit(language);
             double deposit = Double.Parse(Console.ReadLine());
             CurrentUser.UserBalanace = deposit + CurrentUser.UserBalanace;
-            Console.WriteLine("Thank you, your new balnace is: " + CurrentUser.UserBalanace);
+            languageOptions.ThanksToDeposit(language, CurrentUser.UserBalanace);
 
         }
 
-        public void withdraw(CardHolder CurrentUser)
+        public void withdraw(CardHolder CurrentUser, string language)
         {
-            Console.WriteLine("How much would you like to withdraw: ");
+            languageOptions.LikeToWithdraw(language);
             double withdrawal = Double.Parse(Console.ReadLine());
             if (withdrawal > CurrentUser.UserBalanace)
             {
-                Console.WriteLine("Insufficient balance");
+                languageOptions.NotEnoughBalance(language);
             }
             else
             {
                 double NewBalance = CurrentUser.UserBalanace - withdrawal;
                 CurrentUser.UserBalanace = NewBalance;
-                Console.WriteLine("Thank you for withdrawing " + withdrawal);
+                languageOptions.ThanksForWithdrawing(language, withdrawal);
             }
 
         }
 
-        public void transfer(CardHolder CurrentUser, CardHolder TransferUser)
+        public void transfer(CardHolder CurrentUser, CardHolder TransferUser, string language)
         {
-            Console.WriteLine("How much would you like to transfer: ");
+            languageOptions.LikeToTransfer(language);
             double transfer = Double.Parse(Console.ReadLine());
             if (transfer > CurrentUser.UserBalanace)
             {
-                Console.WriteLine("Insufficient balance");
+                languageOptions.NotEnoughBalance(language);
             }
             else
             {
@@ -67,9 +69,8 @@
 
                 CurrentUser.UserBalanace = NewBalance;
                 TransferUser.UserBalanace = TransferUserNewBalance;
-                Console.WriteLine("Thank you for Transfering " + transfer + " to " + TransferUser.FullName);
-                Console.WriteLine("Your Current Balance is " + CurrentUser.UserBalanace);
-
+                languageOptions.ThankForTransfer(language, transfer, TransferUser.FullName);
+                languageOptions.DisplayBalance(language, CurrentUser.UserBalanace);
             }
         }
     }
@@ -95,14 +96,15 @@
                 Console.WriteLine("3. Gosi Balance");
                 Console.WriteLine("4. Nyefee Ego");
                 Console.WriteLine("5. Ụzọ ọpụpụ");
-            }else if(language == "3")
+            }
+            else if (language == "3")
             {
-                Console.WriteLine("Abeg Select one of these options..!");
+                Console.WriteLine("Abeg Wetin you go wan do..!");
                 Console.WriteLine("1. put money");
                 Console.WriteLine("2.  commot money");
                 Console.WriteLine("3. you wan see balance");
                 Console.WriteLine("4. send money give person");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. commot app");
             }
             else
             {
@@ -124,7 +126,7 @@
             Console.WriteLine("Select Language Option");
             Console.WriteLine("1. English");
             Console.WriteLine("2. Igbo");
-             Console.WriteLine("3. pidgin");
+            Console.WriteLine("3. pidgin");
             string Language = Console.ReadLine();
 
             LanguageOptions languageOptions = new LanguageOptions();
@@ -195,11 +197,11 @@
                 }
                 if (option == 1)
                 {
-                    CurrentUser.deposit(CurrentUser);
+                    CurrentUser.deposit(CurrentUser, Language);
                 }
                 else if (option == 2)
                 {
-                    CurrentUser.withdraw(CurrentUser);
+                    CurrentUser.withdraw(CurrentUser, Language);
                 }
                 else if (option == 3)
                 {
@@ -232,7 +234,7 @@
                             languageOptions.cardNotRecognized(Language);
                         }
                     }
-                    CurrentUser.transfer(CurrentUser, TransferUser);
+                    CurrentUser.transfer(CurrentUser, TransferUser,Language);
                 }
                 else if (option == 5)
                 {
