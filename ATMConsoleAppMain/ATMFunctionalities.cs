@@ -45,7 +45,7 @@
             else
             {
                 double NewBalance = CurrentUser._UserBalanace - withdrawal;
-                CurrentUser._UserBalanace += NewBalance;
+                CurrentUser._UserBalanace = NewBalance;
                 Console.WriteLine("Thank you for withdrawing " + withdrawal);
             }
 
@@ -65,8 +65,8 @@
                 double NewBalance = CurrentUser._UserBalanace - transfer;
                 double TransferUserNewBalance = TransferUser._UserBalanace + transfer;
 
-                CurrentUser._UserBalanace -= NewBalance;
-                TransferUser._UserBalanace += TransferUserNewBalance;
+                CurrentUser._UserBalanace = NewBalance;
+                TransferUser._UserBalanace = TransferUserNewBalance;
                 Console.WriteLine("Thank you for Transfering " + transfer + " to " + TransferUser._FullName);
                 Console.WriteLine("Your Current Balance is " + CurrentUser._UserBalanace);
 
@@ -75,17 +75,36 @@
     }
     public class ATMFunctionalities
     {
-        void printOptions()
+       public void printOptions(string language)
         {
-            Console.WriteLine("Please choose from one of these following options..!");
-            Console.WriteLine("1. Deposit");
-            Console.WriteLine("2. Withdraw");
-            Console.WriteLine("3. Show Balance");
-            Console.WriteLine("4. Transfer");
-            Console.WriteLine("5. Exit");
 
-
-
+            if (language == "1")
+            {
+                Console.WriteLine("Please choose from one of these following options..!");
+                Console.WriteLine("1. Deposit");
+                Console.WriteLine("2. Withdraw");
+                Console.WriteLine("3. Show Balance");
+                Console.WriteLine("4. Transfer");
+                Console.WriteLine("5. Exit");
+            }
+            else if (language == "2")
+            {
+                Console.WriteLine("Biko họrọ n'otu n'ime nhọrọ ndị a..!");
+                Console.WriteLine("1. Nkwụnye ego");
+                Console.WriteLine("2. Wepụ");
+                Console.WriteLine("3. Gosi Balance");
+                Console.WriteLine("4. Nyefee Ego");
+                Console.WriteLine("5. Ụzọ ọpụpụ");
+            }
+            else
+            {
+                Console.WriteLine("Please choose from one of these following options..!");
+                Console.WriteLine("1. Deposit");
+                Console.WriteLine("2. Withdraw");
+                Console.WriteLine("3. Show Balance");
+                Console.WriteLine("4. Transfer");
+                Console.WriteLine("5. Exit");
+            }
         }
 
         public void Run()
@@ -94,9 +113,16 @@
             CardHolders.Add(new CardHolder("45327722", 1234, "John Jonas", 150.32));
             CardHolders.Add(new CardHolder("7657725", 4254, "Matt Smith", 700.12));
             CardHolders.Add(new CardHolder("89327711", 2458, "Shawn Wallas", 54.32));
+            Console.WriteLine("Select Language Option");
+            Console.WriteLine("1. English");
+            Console.WriteLine("2. Igbo");
+            Console.WriteLine("3. pidgin");
+            string Language = Console.ReadLine();
 
-            Console.WriteLine("Welcome to Atm");
-            Console.WriteLine("Please Insert Your Card Number: ");
+            LanguageOptions languageOptions = new LanguageOptions();
+            languageOptions.welcome(Language);
+
+
             string debitCardNumber = "";
             CardHolder CurrentUser;
 
@@ -113,15 +139,15 @@
                     }
                     else
                     {
-                        Console.WriteLine("Card Not recognized try again");
+                        languageOptions.cardNotRecognized(Language);
                     }
                 }
                 catch
                 {
-                    Console.WriteLine("Card Not recognized try again");
+                    languageOptions.cardNotRecognized(Language);
                 }
             }
-            Console.WriteLine("Please Provide your Pin Number: ");
+            languageOptions.InsertPinNumber(Language);
             int userPin = 0;
             while (true)
             {
@@ -136,21 +162,21 @@
                     }
                     else
                     {
-                        Console.WriteLine("Card Pin Incorrect try again");
+                      languageOptions.cardPinNotRecognized(Language);
                     }
                 }
                 catch
                 {
-                    Console.WriteLine("Card Pin Incorrect try again");
+                    languageOptions.cardPinNotRecognized(Language);
                 }
             }
 
-            Console.WriteLine("Weclome " + CurrentUser.GetFullName());
+            languageOptions.WelcomeUser(Language, CurrentUser.GetFullName());
             int option = 0;
 
             do
             {
-                printOptions();
+                printOptions(Language);
                 try
                 {
                     option = int.Parse(Console.ReadLine());
@@ -169,12 +195,11 @@
                 }
                 else if (option == 3)
                 {
-                    Console.WriteLine( "Your Current Balance is " + CurrentUser.GetUserBalance());
-
+                    languageOptions.DisplayBalance(Language, CurrentUser.GetUserBalance());
                 }
                 else if (option == 4)
                 {
-                    Console.WriteLine("Please Insert Your Card Number Of Person you would like to transfer to");
+                    languageOptions.TransferInsertCard(Language);
                     string TransferUserDebitCardNumber = "";
                     CardHolder TransferUser;
 
@@ -191,12 +216,12 @@
                             }
                             else
                             {
-                                Console.WriteLine("Card Number Not recognized try again");
+                                languageOptions.cardNotRecognized(Language);
                             }
                         }
                         catch
                         {
-                            Console.WriteLine("Card Number Not recognized try again");
+                            languageOptions.cardNotRecognized(Language);
                         }
                     }
                     CurrentUser.transfer(CurrentUser, TransferUser);
@@ -207,7 +232,7 @@
                 }
 
             } while (option != 5);
-            Console.WriteLine("Thank you have a nice day");
+            languageOptions.HaveANiceDay(Language);
         }
     }
 

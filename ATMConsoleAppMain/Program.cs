@@ -6,7 +6,7 @@
         {
             ATMFunctionalities aTMFunctionalities = new ATMFunctionalities();
             aTMFunctionalities.Run();
-            Console.WriteLine("Hello, World!");
+           
         }
     }
 }
