@@ -29,49 +29,76 @@
         LanguageOptions languageOptions = new LanguageOptions();
         public void deposit(CardHolder CurrentUser, string language)
         {
-            languageOptions.LikeToDeposit(language);
-            double deposit = Double.Parse(Console.ReadLine());
-            CurrentUser.UserBalanace = deposit + CurrentUser.UserBalanace;
-            languageOptions.ThanksToDeposit(language, CurrentUser.UserBalanace);
+            try
+            {
+                languageOptions.LikeToDeposit(language);
+                double deposit = Double.Parse(Console.ReadLine());
+                CurrentUser.UserBalanace = deposit + CurrentUser.UserBalanace;
+                languageOptions.ThanksToDeposit(language, CurrentUser.UserBalanace);
+            }
+            catch
+            {
+                languageOptions.exceptionMessage(language);
+                
+            }
+            
 
         }
 
         public void withdraw(CardHolder CurrentUser, string language)
         {
-            languageOptions.LikeToWithdraw(language);
-            double withdrawal = Double.Parse(Console.ReadLine());
-            if (withdrawal > CurrentUser.UserBalanace)
+            try
             {
-                languageOptions.NotEnoughBalance(language);
+                languageOptions.LikeToWithdraw(language);
+                double withdrawal = Double.Parse(Console.ReadLine());
+                if (withdrawal > CurrentUser.UserBalanace)
+                {
+                    languageOptions.NotEnoughBalance(language);
+                }
+                else
+                {
+                    double NewBalance = CurrentUser.UserBalanace - withdrawal;
+                    CurrentUser.UserBalanace = NewBalance;
+                    languageOptions.ThanksForWithdrawing(language, withdrawal);
+                }
             }
-            else
+            catch
             {
-                double NewBalance = CurrentUser.UserBalanace - withdrawal;
-                CurrentUser.UserBalanace = NewBalance;
-                languageOptions.ThanksForWithdrawing(language, withdrawal);
+                languageOptions.exceptionMessage(language);
+               // Console.WriteLine("Something went wrong. Please try again");
             }
+
 
         }
 
         public void transfer(CardHolder CurrentUser, CardHolder TransferUser, string language)
         {
-            languageOptions.LikeToTransfer(language);
-            double transfer = Double.Parse(Console.ReadLine());
-            if (transfer > CurrentUser.UserBalanace)
+            try
             {
-                languageOptions.NotEnoughBalance(language);
+                languageOptions.LikeToTransfer(language);
+                double transfer = Double.Parse(Console.ReadLine());
+                if (transfer > CurrentUser.UserBalanace)
+                {
+                    languageOptions.NotEnoughBalance(language);
+                }
+                else
+                {
+
+                    double NewBalance = CurrentUser.UserBalanace - transfer;
+                    double TransferUserNewBalance = TransferUser.UserBalanace + transfer;
+
+                    CurrentUser.UserBalanace = NewBalance;
+                    TransferUser.UserBalanace = TransferUserNewBalance;
+                    languageOptions.ThankForTransfer(language, transfer, TransferUser.FullName);
+                    languageOptions.DisplayBalance(language, CurrentUser.UserBalanace);
+                }
             }
-            else
+            catch
             {
-
-                double NewBalance = CurrentUser.UserBalanace - transfer;
-                double TransferUserNewBalance = TransferUser.UserBalanace + transfer;
-
-                CurrentUser.UserBalanace = NewBalance;
-                TransferUser.UserBalanace = TransferUserNewBalance;
-                languageOptions.ThankForTransfer(language, transfer, TransferUser.FullName);
-                languageOptions.DisplayBalance(language, CurrentUser.UserBalanace);
+                languageOptions.exceptionMessage(language);
+                //Console.WriteLine("Something went wrong. Please try again");
             }
+
         }
     }
     public class ATMFunctionalities

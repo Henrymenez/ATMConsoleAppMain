@@ -318,5 +318,25 @@
                 Console.WriteLine("Thank you for Transfering " + transfer + " to " + fullName);
             }
         }
+
+        public void exceptionMessage(string message)
+        {
+            if (message == "1")
+            {
+                  Console.WriteLine("Something went wrong. Please try again");
+            }
+            else if (message == "2")
+            {
+                 Console.WriteLine("O nwere ihe adighi mma. Biko nwaa ozo");
+            }
+            else if (message == "3")
+            {
+                  Console.WriteLine("Something happen. Abeg try again");
+            }
+            else
+            {
+                 Console.WriteLine("Something went wrong. Please try again");
+            }
+        }
     }
 }
