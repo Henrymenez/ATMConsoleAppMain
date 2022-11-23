@@ -90,12 +90,12 @@
             }
             else if (language == "2")
             {
-                Console.WriteLine("Biko họrọ n'otu n'ime nhọrọ ndị a..!");
-                Console.WriteLine("1. Nkwụnye ego");
-                Console.WriteLine("2. Wepụ");
+                Console.WriteLine("Biko horo n'otu n'ime nhoro ndi a..!");
+                Console.WriteLine("1. Nkwunye ego");
+                Console.WriteLine("2. Wepu");
                 Console.WriteLine("3. Gosi Balance");
                 Console.WriteLine("4. Nyefee Ego");
-                Console.WriteLine("5. Ụzọ ọpụpụ");
+                Console.WriteLine("5. Uzo opupu");
             }
             else if (language == "3")
             {
