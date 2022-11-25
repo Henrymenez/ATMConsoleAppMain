@@ -32,7 +32,7 @@
             try
             {
                 languageOptions.LikeToDeposit(language);
-                double deposit = Double.Parse(Console.ReadLine());
+                double deposit = Math.Abs(Double.Parse(Console.ReadLine()));
                 CurrentUser.UserBalanace = deposit + CurrentUser.UserBalanace;
                 languageOptions.ThanksToDeposit(language, CurrentUser.UserBalanace);
             }
@@ -50,7 +50,7 @@
             try
             {
                 languageOptions.LikeToWithdraw(language);
-                double withdrawal = Double.Parse(Console.ReadLine());
+                double withdrawal = Math.Abs(Double.Parse(Console.ReadLine()));
                 if (withdrawal > CurrentUser.UserBalanace)
                 {
                     languageOptions.NotEnoughBalance(language);
@@ -76,7 +76,7 @@
             try
             {
                 languageOptions.LikeToTransfer(language);
-                double transfer = Double.Parse(Console.ReadLine());
+                double transfer = Math.Abs(Double.Parse(Console.ReadLine()));
                 if (transfer > CurrentUser.UserBalanace)
                 {
                     languageOptions.NotEnoughBalance(language);
